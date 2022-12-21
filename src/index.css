@@ -1,0 +1,243 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #05292E;
+    color: rgb(233, 233, 233);
+}
+
+
+
+.header {
+    background-image: url("https://www.todofondos.net/wp-content/uploads/fondo-de-pantalla-de-1920x1080.-wallpaper-hd-1080p-de-rick-y-morty.png");
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: 0px;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-info {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.308);
+    width: 100%;
+}
+
+.search-info li {
+    padding: 5px 0px;
+    cursor: pointer;
+}
+
+.search-info li:hover {
+    background-color: #42a141;
+}
+
+
+.form-div {
+    position: relative;
+}
+
+
+.form-inp {
+    /* text-align: center; */
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    /* background-color: #7E7E7E; */
+    font-size: 25px;
+    border-radius: 7px;
+    border-style: none;
+    outline: none;
+}
+
+
+.form-btn {
+    color: rgb(233, 232, 232);
+    background: linear-gradient(#4AB648, #42a141, #337e32);
+    background-repeat: no-repeat;
+    padding: 1px 10px;
+    margin: 0px 117px;
+    font-size: 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    border: none;
+    margin-top: 15px;
+}
+
+.form-btn:hover {
+    transform: scale(1.2);
+    transition: .4s ease-in-out;
+    background: linear-gradient(#4ab6481a, #43a1411e, rgba(51, 126, 50, 0.137)32);
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 20px 2px rgb(131, 255, 127);
+}
+
+
+
+
+.info-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: max-content; */
+    padding: 20px 40px;
+    margin: 50px 150px;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+    background-color: #062226;
+    box-shadow: 0px 0px 20px 2px rgb(137 247 133);
+}
+
+.location-info {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5rem;
+    list-style: none;
+}
+
+
+
+.location-residents {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.resident-card-header {
+    position: relative;
+
+}
+
+.resident-card-header>img {
+    border-radius: 10px;
+}
+
+.resident-card {
+    border-radius: 10px;
+    background-color: #062226;
+    color: rgb(233, 233, 233);
+}
+
+
+.resident-card-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 20px;
+    color: white;
+    border-end-end-radius: 20px;
+    border-top-right-radius: 10px;
+    background-color: #0622266e;
+}
+
+.circle {
+    width: 10px;
+    aspect-ratio: 1;
+    border-radius: 50px;
+}
+
+.circle.Alive {
+    background-color: #4AB648;
+}
+
+.circle.Dead {
+    background-color: brown;
+}
+
+.circle.Unknown {
+    background-color: rgb(207, 14, 14);
+}
+
+.resident-card-body {
+    padding: 17px;
+}
+
+.resident-card-body>h2 {
+    text-align: center;
+}
+
+.resident-card-body>ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.resident-card-body>ul>li {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.resident-card-body span {
+    color: #7E7E7E;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.error-message {
+    position: absolute;
+    top: 30px;
+    background-color: #062226;
+    color: #8ef08c;
+    width: max-content;
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: .5s ease-in-out;
+}
+
+.error-message>p {
+    margin: 0;
+}
+
+.resident-card:hover {
+    animation: scroll 2s infinite ease-in-out;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateY(10px);
+        /* transform:translateX(0); */
+    }
+
+    50% {
+        /* transform: translateY(10px); */
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateY(10px);
+        /* transform:translateX(10px); */
+
+
+    }
+}
