@@ -1,11 +1,11 @@
 import React from 'react'
 import CharacterCard from './CharacterCard'
 
-const CharacterList = ({location}) => {
+const CharacterList = ({residentsFilter}) => {
     return (
         <section className='location-residents'>
         {
-            location?.residents.map(urlResident => (
+           residentsFilter?.map(urlResident => (
             <CharacterCard key={urlResident} urlResident={urlResident}/>
             ))
         } 

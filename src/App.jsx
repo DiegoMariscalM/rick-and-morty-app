@@ -7,10 +7,15 @@ import LocationFilter from "./components/LocationFilter";
 import LocationInfo from "./components/LocationInfo";
 import getRandomNumber from "./utils/getRandomNumber";
 
+const RESIDENTS_PER_PAGE = 15
+
 function App() {
   const [location, setLocation] = useState();
   const [locationName, setlocationName] = useState("");
   const [showError, setshowError] = useState();
+  const [currentPage, setCurrentPage] = useState(1)
+  const [lastPage, setLastPage] = useState(1)
+  const [residentsFilter, setResidentsFilter] = useState([])
 
   const getDimensionData = (idDimension) => {
     if (idDimension) {
@@ -30,10 +35,33 @@ function App() {
     }
   };
 
+  useEffect (()=>{
+    if(!location) return
+    const quantityResidents = location.residents.length
+    const quantityPages = Math.ceil (quantityResidents / RESIDENTS_PER_PAGE)
+    setLastPage(quantityPages)
+    setCurrentPage(1)
+  },[location])
+
+  useEffect(()=> {
+    const lastResidentCut =currentPage * RESIDENTS_PER_PAGE
+    const firstResidentCut = lastResidentCut - RESIDENTS_PER_PAGE 
+    const newResidentsFilter = location?.residents.slice(firstResidentCut, lastResidentCut)
+    setResidentsFilter(newResidentsFilter)
+  },[location, currentPage])
+
   useEffect(() => {
     const randomDimension = getRandomNumber();
     getDimensionData(randomDimension);
   }, []);
+
+  const getAllPages = () => {
+    const arrayPages = []
+    for(let i=1; i <= lastPage; i++){
+      arrayPages.push(i)
+    }
+    return arrayPages
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -81,7 +109,19 @@ function App() {
         </article>
       </header>
       <LocationInfo location={location} />
-      <CharacterList location={location} />
+      <CharacterList residentsFilter={residentsFilter} />
+      <ul className="list-pages">
+        {
+          getAllPages().map(page => (
+            <li 
+            className={currentPage === page ? "active" : ""}
+            onClick={() => setCurrentPage(page)} 
+            key={page}>
+              {page}
+              </li>
+          ))
+        }
+      </ul>
     </div>
   );
 }
